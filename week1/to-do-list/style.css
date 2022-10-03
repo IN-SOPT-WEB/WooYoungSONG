@@ -1,4 +1,5 @@
 @import "reset.css";
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 header{
     display: flex;
@@ -23,6 +24,10 @@ ul, li{
     padding-left: 2rem;
 }
 
+.sub{
+    padding-top: 0.5rem;
+}
+
 nav{
     display: flex;
     justify-content: center;
@@ -42,6 +47,54 @@ button:hover{
     color: orange;
     cursor: pointer;
     border: 1px solid orange;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+}
+
+.left-section{
+    padding-left: 1rem;
+    width: 50%;
+    height: 100%;
+    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right-section{
+    width: 50%;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.today-list{
+    padding: 0.5rem 0;
+    border-bottom: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input{
+    width: 22rem;
+}
+
+.input-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 40px;
+}
+
+.input-button{
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .footer{
