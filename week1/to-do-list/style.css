@@ -1,0 +1,51 @@
+@import "reset.css";
+
+header{
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    background-color: orange;
+    height: 3rem;
+}
+
+footer{
+    width: 100vw;
+    background-color: orange;
+    height: 3rem;
+}
+
+ul, li{
+    list-style: none;
+}
+
+.title{
+    font-size: 28px;
+    padding-left: 2rem;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid black;
+}
+
+button{
+    border: none;
+    margin: 0.5rem;
+    border-radius: 4px;
+    color: white;
+    background-color: orange;
+}
+
+button:hover{
+    background-color: white;
+    color: orange;
+    cursor: pointer;
+    border: 1px solid orange;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+}
