@@ -90,11 +90,13 @@ main{
     justify-content: center;
 }
 
+.card-grid{
+    width: 1024px;
+}
+
 .card{
-    width: 18rem;
     border-radius: 4px;
     box-shadow: rgb(0 0 0 / 4%) 0px 4px 16px 0px;
-    margin: 1rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -204,14 +206,14 @@ main{
     .card-grid{
         display: grid;
         grid-gap: 25px;
-        grid-template-columns: repeat(4, 18rem);
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media screen and (max-width:1199px) {
 /* 타블렛 가로 */
     .card-grid{
-        grid-template-columns: repeat(3, 18rem);
+        grid-template-columns: repeat(3, 1fr);
     }
     header, .nav, .card-grid{
         width: calc(100% - 2rem);
@@ -220,13 +222,13 @@ main{
 @media screen and (max-width:899px) {
 /* 모바일 가로, 타블렛 세로 */
     .card-grid{
-        grid-template-columns: repeat(2, 18rem);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media screen and (max-width:599px) {
 /* 모바일 세로 */
     .card-grid{
-        grid-template-columns: repeat(1, 18rem);
+        grid-template-columns: repeat(1, 1fr);
     }
 }
