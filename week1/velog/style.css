@@ -200,3 +200,33 @@ main{
     color:#212529;
 }
 
+@media screen and (max-width:1799px) {
+    .card-grid{
+        display: grid;
+        grid-gap: 25px;
+        grid-template-columns: repeat(4, 18rem);
+    }
+}
+
+@media screen and (max-width:1199px) {
+/* 타블렛 가로 */
+    .card-grid{
+        grid-template-columns: repeat(3, 18rem);
+    }
+    header, .nav, .card-grid{
+        width: calc(100% - 2rem);
+    }
+}
+@media screen and (max-width:899px) {
+/* 모바일 가로, 타블렛 세로 */
+    .card-grid{
+        grid-template-columns: repeat(2, 18rem);
+    }
+}
+
+@media screen and (max-width:599px) {
+/* 모바일 세로 */
+    .card-grid{
+        grid-template-columns: repeat(1, 18rem);
+    }
+}
