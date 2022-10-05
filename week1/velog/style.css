@@ -11,18 +11,18 @@ body{
 
 .velog{
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
 }
 
 header{
     width: 1024px;
     height: 100%;
+    padding-top: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-weight: bold;
-    padding-top: 1rem;
 }
 
 .user-info{
@@ -36,8 +36,8 @@ header{
 
 .user-image{
     display: block;
-    height: 2.5rem;
     width: 2.5rem;
+    height: 2.5rem;
     box-shadow: rgb(0 0 0 / 9%) 0px 0px 8px;
     border-radius: 50%;
     object-fit: cover;
@@ -45,24 +45,22 @@ header{
 
 .post-button{
     height: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    font-size: 1rem;
-    border-radius: 1rem;
+    padding: 0 1rem;
     border: none;
+    border-radius: 1rem;
     outline: none;
-    font-weight: bold;
-    word-break: keep-all;
     background: #212529;
     color: white;
+    font-size: 1rem;
+    font-weight: bold;
     transition: all 0.125s ease-in 0s;
     cursor: pointer;
 }
 
 .post-button:hover{
     border: 1px solid #212529;
-    color: #212529;
     background: #F8F9FA;
+    color: #212529;
 }
 
 .nav{
@@ -82,10 +80,10 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 3rem;
-    font-size: 1.125rem;
-    margin-right: 0.5rem;
     width: 7rem;
+    height: 3rem;
+    margin-right: 0.5rem;
+    font-size: 1.125rem;
     cursor: pointer;
 }
 
@@ -94,17 +92,14 @@ header{
 }
 
 .week{
-    background-color: white;
-    height: 2rem;
-    width: 6rem;
-    border-radius: 4px;
     display: flex;
-    -webkit-box-align: center;
     align-items: center;
-    -webkit-box-pack: justify;
     justify-content: space-between;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    width: 6rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border-radius: 4px;
+    background-color: white;
     font-weight: 600;
     font-size: 0.875rem;
     cursor: pointer;
@@ -115,8 +110,8 @@ header{
 
 main{
     display: flex;
-    margin-top: 2rem;
     justify-content: center;
+    margin-top: 2rem;
 }
 
 .card-grid{
@@ -124,12 +119,12 @@ main{
 }
 
 .card{
-    border-radius: 4px;
-    box-shadow: rgb(0 0 0 / 4%) 0px 4px 16px 0px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
+    border-radius: 4px;
+    overflow: hidden;
     cursor: pointer;
+    box-shadow: rgb(0 0 0 / 4%) 0px 4px 16px 0px;
 }
 
 .card:hover {
@@ -141,9 +136,9 @@ main{
 }
 
 .card-info{
-    padding: 1rem;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
 }
 
 .card-title{
@@ -169,15 +164,14 @@ main{
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--text2);
 }
 
 .card-detail{
-    color:#868E96;
-    font-size: 0.75rem;
-    line-height: 1.5;
     display: flex;
     padding-right: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color:#868E96;
 }
 
 .card-date{
@@ -186,8 +180,7 @@ main{
 }
 
 .separator{
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
+    margin: 0 0.25rem;
 }
 
 .card-reply{
@@ -196,18 +189,13 @@ main{
 }
 
 .card-sub-info{
-    font-size: 0.75rem;
-    line-height: 1.5;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.625rem 1rem;
     border-top: 1px solid #F1F3F5;
-    display: flex;
     font-size: 0.75rem;
     line-height: 1.5;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
 }
 
 .left-sub-info-section, .right-sub-info-section{
@@ -216,12 +204,12 @@ main{
 }
 
 .card-editor-image{
-    object-fit: cover;
-    border-radius: 50%;
+    display: block;
     width: 1.5rem;
     height: 1.5rem;
-    display: block;
     margin-right: 0.5rem;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .card-editor{
