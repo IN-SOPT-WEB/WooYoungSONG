@@ -97,7 +97,7 @@ input{
     height: 1.5rem;
 }
 
-.footer{
+.to-do-list-footer{
     display: flex;
     align-items: center;
     padding-left: 2rem;
