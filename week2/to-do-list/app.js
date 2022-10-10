@@ -33,8 +33,38 @@ const addTodayTodo = () => {
     }
 }
 
+const addTomorrowTodo= () => {
+    if(tomorrowTodoInput.value == ""){
+        alert("내용을 입력하세요!")
+    }else{
+        const currenLi = document.createElement("li");
+        currenLi.classList.add("todo-item")
+        const creatDeleteButton = document.createElement("span");
+    
+    
+        const currentInputData = tomorrowTodoInput.value;
+        const plusToDoList = document.createElement("span");
+        plusToDoList.innerHTML= `${currentInputData}`
+        creatDeleteButton.className += " material-icons tomorrow-delete-button";
+        creatDeleteButton.innerHTML = 'delete'
+    
+        currenLi.appendChild(plusToDoList)
+        currenLi.appendChild(creatDeleteButton)
+    
+        tomorrowTodoList.appendChild(currenLi)
+        tomorrowTodoInput.value = "";
+    }
+}
+
 todayTodoButton.addEventListener("click", addTodayTodo)
+tomorrowTodoButton.addEventListener("click", addTomorrowTodo)
+
 todayTodoInput.addEventListener("keydown", (e) => {
     if(e.keyCode === 13) // enter 키 치면
         addTodayTodo()
+}) 
+
+tomorrowTodoInput.addEventListener("keydown", (e) => {
+    if(e.keyCode === 13) // enter 키 치면
+        addTomorrowTodo()
 }) 
