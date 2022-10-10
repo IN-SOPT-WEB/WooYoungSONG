@@ -1,0 +1,136 @@
+@import "reset.css";
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 3rem;
+    background-color: orange;
+}
+
+footer{
+    background-color: orange;
+    height: 3rem;
+}
+
+ul, li{
+    list-style: none;
+    width: 35rem;
+}
+
+.title{
+    font-size: 28px;
+    padding-left: 2rem;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid black;
+}
+
+button{
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: orange;
+    margin: 0.5rem;
+}
+
+button:hover{
+    border: 1px solid orange;
+    background-color: white;
+    color: orange;
+    cursor: pointer;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+}
+
+.left-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    padding-left: 1rem;
+    border-right: 1px solid black;
+}
+
+.right-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    padding-left: 1rem;
+}
+
+.today-section, .tomorrow-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid gray;
+}
+
+input{
+    width: 35rem;
+}
+
+.input-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+}
+
+.input-button{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.to-do-list-footer{
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+@media screen and (max-width:1199px) {
+    /* 타블렛 가로 */
+    main{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .left-section{
+        width: 100%;
+        height: 50%;
+        border-bottom: 1px solid black;
+        border-right: none;
+    }
+
+    .right-section{
+        width: 100%;
+        height: 50%;
+    }
+
+    .toomorrow-section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    }

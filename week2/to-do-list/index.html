@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do-list</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        <p class="title">💪 To-do-list</p>
+    </header>
+    <nav>
+        <button class="today-button">오늘 할 일</button>
+        <button class="tomorrow-button">내일 할 일</button>
+        <button class="both-button">전체보기</button>
+    </nav>
+    <main>
+        <section class="left-section">
+            <section class="today-section">
+                <h2>오늘 할 일</h2>
+                <ul class="today-todo-list"></ul>
+            </section>
+            <section class="input-wrapper">
+                <input type="text" class="today-to-do-input" placeholder="오늘 할 일을 추가하세요"/>
+                <button type="button" class="today-input-button"> + </button>
+            </section>
+        </section>
+        <section class="right-section">
+            <section class="tomorrow-section">
+                <h2>내일 할 일</h2>
+                <ul class="tomorrow-todo-list">
+                    <li class="todo-item">
+                        <span>sopt 2차 과제</span>
+                        <span class="material-icons tomorrow-delete-button"> delete </span>
+                    </li>
+                    <li class="todo-item">
+                        <span>타스형 스터디</span>
+                        <span class="material-icons tomorrow-delete-button"> delete </span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="input-wrapper">
+                <input type="text" class="tomorrow-to-do-input" placeholder="내일 할 일을 추가하세요"/>
+                <button type="button" class="tomorrow-input-button"> + </button>
+            </section>
+        </section>
+    </main>
+    <footer class="to-do-list-footer">
+        Copyright © IN SOPT
+    </footer>
+</body>
+</html>
