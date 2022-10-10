@@ -98,20 +98,67 @@ header{
 
 .week{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.week-box{
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 0 0.5rem;
     width: 6rem;
     height: 2rem;
-    padding: 0 0.5rem;
     border-radius: 4px;
-    background-color: white;
     font-weight: 600;
     font-size: 0.875rem;
     cursor: pointer;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 8px;
+    position: absolute;
+}
+
+.week-box p:hover{
+    color: rgb(91, 90, 90);
+}
+
+.drop-content{
+    display: none;
+}
+
+.drop-content a{
+    padding: 6px;
+    border-bottom: 0.5px solid rgb(241, 241, 241);
+}
+
+.drop-content a:hover{
+    background-color:rgb(235, 235, 235);
+}
+
+.toggle-week-options{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0.5rem;
+    width: 6rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    z-index: 999;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 8px;
+    position: absolute;
+    top:97px;
+}
+
+.checked{
+    color:  rgb(36, 198, 144);
 }
 .trending span, .current span, .week span{
     margin-right: 0.5rem;
 }
+
 
 main{
     display: flex;
