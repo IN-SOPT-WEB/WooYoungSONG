@@ -109,6 +109,18 @@ input{
     padding-left: 2rem;
 }
 
+.hidden{
+    width: 0;
+    overflow: hidden;
+    padding-left: 0;
+    transition: all 1s;
+}
+
+.open{
+    width: 100%;
+    transition: all 1s;
+}
+
 @media screen and (max-width:1199px) {
     /* 타블렛 가로 */
     main{
@@ -133,4 +145,17 @@ input{
         flex-direction: column;
         align-items: center;
     }
+
+    .hidden{
+        height: 0;
+        overflow: hidden;
+        padding-left: 0;
+        transition: all 1s;
+    }
+    
+    .open{
+        height: 100%;
+        transition: all 1s;
+    }
+
     }

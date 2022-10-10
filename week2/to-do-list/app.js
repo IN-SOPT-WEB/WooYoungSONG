@@ -2,7 +2,7 @@ const leftPanel = document.querySelector('.left-section')
 const rightPanel = document.querySelector('.right-section')
 const todayButton= document.querySelector('.today-button')
 const tomorrowButton = document.querySelector('.tomorrow-button')
-const bothButton = document.querySelector('.both-container')
+const bothButton = document.querySelector('.both-button')
 const todayTodoInput = document.querySelector('.today-to-do-input')
 const todayTodoButton = document.querySelector('.today-input-button')
 const tomorrowTodoInput = document.querySelector('.tomorrow-to-do-input')
@@ -56,8 +56,32 @@ const addTomorrowTodo= () => {
     }
 }
 
+const openTodayTodo = () => {
+    rightPanel.classList.add("hidden");
+    leftPanel.classList.remove("hidden");
+    rightPanel.classList.remove("open");
+    leftPanel.classList.add("open");
+}
+
+const openTomorrowTodo = () => {
+    rightPanel.classList.remove("hidden");
+    leftPanel.classList.add("hidden");
+    rightPanel.classList.add("open");
+    leftPanel.classList.remove("open");
+}
+
+const openBothTodo = () => {
+    rightPanel.classList.remove("hidden");
+    leftPanel.classList.remove("hidden");
+    rightPanel.classList.remove("open");
+    leftPanel.classList.remove("open");
+}
+
 todayTodoButton.addEventListener("click", addTodayTodo)
 tomorrowTodoButton.addEventListener("click", addTomorrowTodo)
+todayButton.addEventListener("click", openTodayTodo)
+tomorrowButton.addEventListener("click", openTomorrowTodo)
+bothButton.addEventListener("click", openBothTodo)
 
 todayTodoInput.addEventListener("keydown", (e) => {
     if(e.keyCode === 13) // enter 키 치면
@@ -67,4 +91,4 @@ todayTodoInput.addEventListener("keydown", (e) => {
 tomorrowTodoInput.addEventListener("keydown", (e) => {
     if(e.keyCode === 13) // enter 키 치면
         addTomorrowTodo()
-}) 
+})
