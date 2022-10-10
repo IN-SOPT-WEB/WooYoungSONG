@@ -9,6 +9,15 @@ const tomorrowTodoInput = document.querySelector('.tomorrow-to-do-input')
 const tomorrowTodoButton = document.querySelector('.tomorrow-input-button')
 const todayTodoList = document.querySelector('.today-todo-list')
 const tomorrowTodoList = document.querySelector('.tomorrow-todo-list')
+const deleteButton = document.querySelectorAll('.delete-button')
+
+for( var i=0; i<deleteButton.length; i++){
+	deleteButton[i].addEventListener("click", deleteTodoItem);
+}
+
+function deleteTodoItem(){
+    this.parentElement.remove();
+}
 
 const addTodayTodo = () => {
     if(todayTodoInput.value == ""){
@@ -22,7 +31,7 @@ const addTodayTodo = () => {
         const currentInputData = todayTodoInput.value;
         const plusToDoList = document.createElement("span");
         plusToDoList.innerHTML= `${currentInputData}`
-        creatDeleteButton.className += " material-icons today-delete-button";
+        creatDeleteButton.className += " material-icons delete-button";
         creatDeleteButton.innerHTML = 'delete'
     
         currenLi.appendChild(plusToDoList)
@@ -30,6 +39,7 @@ const addTodayTodo = () => {
     
         todayTodoList.appendChild(currenLi)
         todayTodoInput.value = "";
+        creatDeleteButton.addEventListener("click",deleteTodoItem)
     }
 }
 
@@ -45,7 +55,7 @@ const addTomorrowTodo= () => {
         const currentInputData = tomorrowTodoInput.value;
         const plusToDoList = document.createElement("span");
         plusToDoList.innerHTML= `${currentInputData}`
-        creatDeleteButton.className += " material-icons tomorrow-delete-button";
+        creatDeleteButton.className += " material-icons delete-button";
         creatDeleteButton.innerHTML = 'delete'
     
         currenLi.appendChild(plusToDoList)
@@ -53,6 +63,7 @@ const addTomorrowTodo= () => {
     
         tomorrowTodoList.appendChild(currenLi)
         tomorrowTodoInput.value = "";
+        creatDeleteButton.addEventListener("click",deleteTodoItem)
     }
 }
 
@@ -77,12 +88,6 @@ const openBothTodo = () => {
     leftPanel.classList.remove("open");
 }
 
-todayTodoButton.addEventListener("click", addTodayTodo)
-tomorrowTodoButton.addEventListener("click", addTomorrowTodo)
-todayButton.addEventListener("click", openTodayTodo)
-tomorrowButton.addEventListener("click", openTomorrowTodo)
-bothButton.addEventListener("click", openBothTodo)
-
 todayTodoInput.addEventListener("keydown", (e) => {
     if(e.keyCode === 13) // enter 키 치면
         addTodayTodo()
@@ -92,3 +97,9 @@ tomorrowTodoInput.addEventListener("keydown", (e) => {
     if(e.keyCode === 13) // enter 키 치면
         addTomorrowTodo()
 })
+
+todayTodoButton.addEventListener("click", addTodayTodo)
+tomorrowTodoButton.addEventListener("click", addTomorrowTodo)
+todayButton.addEventListener("click", openTodayTodo)
+tomorrowButton.addEventListener("click", openTomorrowTodo)
+bothButton.addEventListener("click", openBothTodo)
