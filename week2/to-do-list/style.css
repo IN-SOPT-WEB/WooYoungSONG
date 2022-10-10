@@ -121,6 +121,9 @@ input{
     transition: all 1s;
 }
 
+.material-icons{
+    cursor: pointer;
+}
 @media screen and (max-width:1199px) {
     /* 타블렛 가로 */
     main{
