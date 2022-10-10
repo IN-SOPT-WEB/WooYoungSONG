@@ -107,6 +107,7 @@ input{
     display: flex;
     align-items: center;
     padding-left: 2rem;
+    width: 100vw;
 }
 
 .hidden{
