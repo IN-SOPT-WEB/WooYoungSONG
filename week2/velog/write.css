@@ -1,0 +1,28 @@
+.home-button{
+    height: 2rem;
+    padding: 0 1rem;
+    border: none;
+    border-radius: 1rem;
+    outline: none;
+    background: #212529;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.125s ease-in 0s;
+    cursor: pointer;
+}
+
+.home-button a{
+    color: white;
+    text-decoration: none;
+}
+
+.home-button:hover{
+    border: 1px solid #212529;
+    background: #F8F9FA;
+    color: #212529;
+}
+
+.home-button a:hover{
+    color: #212529;
+}

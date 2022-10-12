@@ -62,12 +62,19 @@ header{
     cursor: pointer;
 }
 
+.post-button a{
+    color: white;
+}
+
 .post-button:hover{
     border: 1px solid #212529;
     background: #F8F9FA;
     color: #212529;
 }
 
+.post-button a:hover{
+    color: #212529;
+}
 .nav{
     width: 1024px;
     height: 50px;
