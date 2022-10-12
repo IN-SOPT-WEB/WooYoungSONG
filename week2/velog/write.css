@@ -12,6 +12,29 @@
     padding-top : 1rem;
 }
 
+.tags-list{
+    list-style: none;
+    display:flex;
+    align-items: center;
+    flex-wrap:wrap;
+    padding: 0;
+}
+
+.tag-item{
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    box-shadow: rgb(0 0 0 / 8%) 0px 0px 8px;
+    height: 2rem;
+    padding: 0 1rem;
+    margin: 1rem;
+    color: rgb(36, 198, 144);
+    background-color:  #F8F9FA;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .home-button{
     height: 2rem;
     padding: 0 1rem;
