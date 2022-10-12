@@ -1,3 +1,17 @@
+.tags-main{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tags-input{
+    border : none;
+    appearance: none;
+    outline : none;
+    padding-top : 1rem;
+}
+
 .home-button{
     height: 2rem;
     padding: 0 1rem;
