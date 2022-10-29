@@ -1,11 +1,18 @@
 import Header from './components/Header.jsx';
 import Content from './components/Content.jsx';
+import styled from 'styled-components';
+
+const BackGroud = styled.div`
+  background-color: black;
+  display: flex;
+  justify-content: center;
+`
 function App() {
   return (
-    <div className="App">
+    <BackGroud>
       <Header />
       <Content />
-    </div>
+    </BackGroud>
   );
 }
 

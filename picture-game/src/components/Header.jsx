@@ -2,12 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Title = styled.div`
-    color:red;
-    font-size:14px;
+    color:white;
+    font-size:30px;
+    font-weight: bold;
 `
 
 export default function header() {
     return (
-        <Title>header</Title>
+        <Title>4세대 여돌 인물퀴즈</Title>
     )
 }
