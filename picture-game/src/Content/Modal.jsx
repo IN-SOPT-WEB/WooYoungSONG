@@ -18,10 +18,12 @@ const CloseButton = styled.button`
     background:white;
     cursor: pointer;
 `
-export default function Modal({isCorrect, setIsModalOpen}) {
+export default function Modal({isCorrect, setIsModalOpen, currentQuizNumber, setCurrentQuizNumber}) {
     const closeModal = () => {
         setIsModalOpen(false)
-        console.log("modal close")
+        if(isCorrect){
+            setCurrentQuizNumber(currentQuizNumber+1);
+        }
     }
 
     return(
