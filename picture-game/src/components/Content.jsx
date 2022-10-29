@@ -11,6 +11,7 @@ const Retry = styled.button`
     width: 6rem;
     height: 2rem;
     font-size: 18px;
+    cursor: pointer;
 `
 export default function Content() {
     const quizDataNumber = []; // 퀴즈에 사용되는 Data들
@@ -27,6 +28,10 @@ export default function Content() {
         }
     }
 
+    const retry = () => {
+        window.location.reload();
+    }
+
     useEffect(() => {
         createGameDataList()
     })
@@ -35,7 +40,7 @@ export default function Content() {
         <>
             <Score />
             <Question quizGameDataList={quizGameDataList}/>
-            <Retry>다시시작</Retry>
+            <Retry onClick={retry}>다시시작</Retry>
         </>
     )
 }
