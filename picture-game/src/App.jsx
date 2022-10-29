@@ -6,6 +6,8 @@ const BackGroud = styled.div`
   background-color: black;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `
 function App() {
   return (
