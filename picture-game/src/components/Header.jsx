@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 const Title = styled.div`
     font-family : 'ImcreSoojin';
-    color:white;
-    font-size:30px;
-    font-weight: bold;
+    color:black;
+    font-size:50px;
+    margin-top: 2rem;
 `
 
 export default function header() {

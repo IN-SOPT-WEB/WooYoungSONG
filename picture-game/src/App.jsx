@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import './App.css';
 
 const BackGroud = styled.div`
-  background-color: black;
+  background-color: white;
   display: flex;
   justify-content: center;
   flex-direction: column;

@@ -6,34 +6,55 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CurrentNumber = styled.div`
-    font-size: 18px;
-    color:white;
+    font-family : 'ImcreSoojin';
+    font-size: 20px;
+    color:black;
+    margin: 0.5rem;
 `
 const Hint = styled.button`
-    font-size: 12px;
-    background: pink;
-    color:white;
+    font-family: 'ImcreSoojin';
+    font-size: 20px;
+    background: white;
     cursor: pointer;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    border: none;
 `
 const QuizPicture = styled.img`
     width: 15rem;
     height: 20rem;
+    border-radius: 2rem;
 `
 const Answers = styled.div`
     display: flex;
 `
 const Answer = styled.button`
+    font-family: 'ImcreSoojin';
     color: white;
-    background: purple;
+    background: #a128a1;
     border-radius: 5px;
     width: 6rem;
     height: 2rem;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
+    margin: 0.5rem;
+    border: none;
+
+    &:hover{  
+        background-color : white;
+        color : #a128a1;
+        border : 2px solid #a128a1;
+    }
 `
 const ResultMessage = styled.div`
-    color: white;
-    font-size: 18px;
+    font-family: 'ImcreSoojin';
+    color: black;
+    font-size: 30px;
+    margin: 0.5rem;
+    background: #ffd0fa;
+    border-radius: 10px;
+    padding: 1rem;
 `
 export default function Question({ userScore, setUserScore}) {
     const [currentQuizNumber, setCurrentQuizNumber] = useState(1);
@@ -103,13 +124,13 @@ export default function Question({ userScore, setUserScore}) {
         {!isEnd ? (
             <>
                 <CurrentNumber>{currentQuizNumber}번째 문제</CurrentNumber>
-                <Hint onClick={showHint}>힌트보기</Hint>
                 <ToastContainer />
                 <QuizPicture src={currentGameData.imageSrc} alt="퀴즈 사진"/>
+                <Hint onClick={showHint}>❔</Hint>
                 <Answers>
                     {currentGameData.answers.map((answer, index) => (
                         <Answer key={index} onClick={chooseAnswer}>{answer}</Answer>
-                    ))}
+                        ))}
                 </Answers>
                 {isModalOpen && <Modal isCorrect={isCorrect} setIsModalOpen={setIsModalOpen} currentQuizNumber={currentQuizNumber} setCurrentQuizNumber={setCurrentQuizNumber}/>}
             </>

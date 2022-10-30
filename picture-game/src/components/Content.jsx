@@ -4,13 +4,21 @@ import Score from '../Content/Score.jsx';
 import styled from 'styled-components'
 
 const Retry = styled.button`
+    font-family: 'ImcreSoojin';
     color: white;
-    background: red;
+    background: #9e9e9e;
     border-radius: 5px;
     width: 6rem;
     height: 2rem;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
+    border: none;
+
+    &:hover{  
+        background-color : white;
+        color : #9e9e9e;
+        border : 2px solid #9e9e9e;
+    }
 `
 export default function Content() {
     const [userScore, setUserScore] = useState(0);
