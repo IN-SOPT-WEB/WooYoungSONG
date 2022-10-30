@@ -1,6 +1,7 @@
 import Header from './components/Header.jsx';
 import Content from './components/Content.jsx';
 import styled from 'styled-components';
+import './App.css';
 
 const BackGroud = styled.div`
   background-color: black;

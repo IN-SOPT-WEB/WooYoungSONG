@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Title = styled.div`
+    font-family : 'ImcreSoojin';
     color:white;
     font-size:30px;
     font-weight: bold;
