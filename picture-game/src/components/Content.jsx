@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Question from '../Content/Question.jsx';
 import Score from '../Content/Score.jsx';
 import gameData from '../GameData.js';
@@ -14,6 +14,7 @@ const Retry = styled.button`
     cursor: pointer;
 `
 export default function Content() {
+    const [userScore, setUserScore] = useState(0);
     const quizDataNumber = []; // 퀴즈에 사용되는 Data들
     const quizGameDataList = []; // 퀴즈에서 보여지는 Data들 순서
     const createGameDataList = () => {
@@ -38,8 +39,8 @@ export default function Content() {
 
     return (
         <>
-            <Score />
-            <Question quizGameDataList={quizGameDataList}/>
+            <Score userScore={userScore} />
+            <Question quizGameDataList={quizGameDataList} userScore={userScore} setUserScore={setUserScore}/>
             <Retry onClick={retry}>다시시작</Retry>
         </>
     )

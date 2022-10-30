@@ -4,8 +4,8 @@ import styled from 'styled-components'
 const CurrentScore = styled.div`
     color : white;
 `
-export default function Score() {
+export default function Score({userScore}) {
     return(
-        <CurrentScore>sdfds</CurrentScore>
+        <CurrentScore>{userScore}점</CurrentScore>
     )
 }

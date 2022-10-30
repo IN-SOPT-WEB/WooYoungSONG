@@ -21,9 +21,7 @@ const CloseButton = styled.button`
 export default function Modal({isCorrect, setIsModalOpen, currentQuizNumber, setCurrentQuizNumber}) {
     const closeModal = () => {
         setIsModalOpen(false)
-        if(isCorrect){
-            setCurrentQuizNumber(currentQuizNumber+1);
-        }
+        setCurrentQuizNumber(currentQuizNumber+1);
     }
 
     return(
