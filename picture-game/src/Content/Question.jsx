@@ -35,7 +35,7 @@ const ResultMessage = styled.div`
     color: white;
     font-size: 18px;
 `
-export default function Question({quizGameDataList, userScore, setUserScore}) {
+export default function Question({ userScore, setUserScore}) {
     const [currentQuizNumber, setCurrentQuizNumber] = useState(1);
     const [currentGameData, setCurrentGameData] = useState([...gameData][0]);
     const [isCorrect, setIsCorrect] = useState(false);
@@ -90,12 +90,11 @@ export default function Question({quizGameDataList, userScore, setUserScore}) {
     }
 
     useEffect(() => {
-
         if(currentQuizNumber > gameData.length){
             setIsEnd(true)
             settingResultMessage(userScore);
         }else{
-            setCurrentGameData([...gameData][quizGameDataList[currentQuizNumber-1]])
+            setCurrentGameData([...gameData][currentQuizNumber-1])
         }
     },[currentQuizNumber])
 
