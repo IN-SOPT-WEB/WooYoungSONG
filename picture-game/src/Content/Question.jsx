@@ -132,7 +132,7 @@ export default function Question({ userScore, setUserScore}) {
                         <Answer key={index} onClick={chooseAnswer}>{answer}</Answer>
                         ))}
                 </Answers>
-                {isModalOpen && <Modal isCorrect={isCorrect} setIsModalOpen={setIsModalOpen} currentQuizNumber={currentQuizNumber} setCurrentQuizNumber={setCurrentQuizNumber}/>}
+                {isModalOpen && <Modal isCorrect={isCorrect} currentGameData={currentGameData} setIsModalOpen={setIsModalOpen} currentQuizNumber={currentQuizNumber} setCurrentQuizNumber={setCurrentQuizNumber}/>}
             </>
         ) : ( // isEnd 일때
             <>
