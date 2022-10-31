@@ -44,9 +44,9 @@ export default function Modal({isCorrect, currentGameData, setIsModalOpen, curre
 
     return(
         <ModalBackground isCorrect={isCorrect}>
-            <Result>{isCorrect ? "정답입니다!" : "오답입니다!"}</Result>
-            <Group>{isCorrect ? `${currentGameData.group} ${currentGameData.correctAnswer}` : `저는 ${currentGameData.group} 입니다~`}</Group>
-            <CloseButton onClick={closeModal} isCorrect={isCorrect}>닫기</CloseButton>
-        </ModalBackground>
+                <Result>{isCorrect ? "정답입니다!" : "오답입니다!"}</Result>
+                <Group>{isCorrect ? `${currentGameData.group} ${currentGameData.correctAnswer}` : `저는 ${currentGameData.group} 입니다~`}</Group>
+                <CloseButton onClick={closeModal} isCorrect={isCorrect}>닫기</CloseButton>
+        </ModalBackground >
     )
 }

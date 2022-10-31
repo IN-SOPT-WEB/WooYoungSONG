@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components'
 import gameData from '../GameData.js';
+import Portal from './Portal.jsx';
 import Modal from './Modal.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -132,7 +133,9 @@ export default function Question({ userScore, setUserScore}) {
                         <Answer key={index} onClick={chooseAnswer}>{answer}</Answer>
                         ))}
                 </Answers>
-                {isModalOpen && <Modal isCorrect={isCorrect} currentGameData={currentGameData} setIsModalOpen={setIsModalOpen} currentQuizNumber={currentQuizNumber} setCurrentQuizNumber={setCurrentQuizNumber}/>}
+                <Portal>
+                    {isModalOpen && <Modal isCorrect={isCorrect} currentGameData={currentGameData} setIsModalOpen={setIsModalOpen} currentQuizNumber={currentQuizNumber} setCurrentQuizNumber={setCurrentQuizNumber}/>}
+                </Portal>
             </>
         ) : ( // isEnd 일때
             <>
