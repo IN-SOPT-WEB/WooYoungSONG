@@ -6,12 +6,6 @@ import Modal from './Modal.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CurrentNumber = styled.div`
-    font-family : 'ImcreSoojin';
-    font-size: 20px;
-    color:black;
-    margin: 0.5rem;
-`
 const Hint = styled.button`
     font-family: 'ImcreSoojin';
     font-size: 20px;
@@ -27,10 +21,10 @@ const QuizPicture = styled.img`
     height: 20rem;
     border-radius: 2rem;
 `
-const Answers = styled.div`
+const AnswerWrapper = styled.div`
     display: flex;
 `
-const Answer = styled.button`
+const AnswerButton = styled.button`
     font-family: 'ImcreSoojin';
     color: white;
     background: #a128a1;
@@ -57,23 +51,29 @@ const ResultMessage = styled.div`
     border-radius: 10px;
     padding: 1rem;
 `
-export default function Question({ userScore, setUserScore}) {
-    const [currentQuizNumber, setCurrentQuizNumber] = useState(1);
-    const [currentGameData, setCurrentGameData] = useState([...gameData][0]);
+export default function Question({ userScore, setUserScore, currentQuizNumber, setCurrentQuizNumber, currentGameData, setCurrentGameData, isEnd, setIsEnd}) {
     const [isCorrect, setIsCorrect] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isEnd, setIsEnd] = useState(false);
     const [resultMessage, setResultMessage] = useState("");
 
     const chooseAnswer = (e) => {
-        setIsModalOpen(true)
+        setIsModalOpen(true);
         
         if(e.target.innerText === currentGameData.correctAnswer){
-            setIsCorrect(true)
-            setUserScore(userScore+1)
+            setIsCorrect(true);
+            setUserScore(userScore => userScore+1);
         }else{
-            setIsCorrect(false)
+            setIsCorrect(false);
         }
+
+        setTimeout(() => {
+            nextPage();
+        }, 1000);
+        
+    }
+
+    const nextPage = () => {
+        setCurrentQuizNumber(currentQuizNumber+1)
     }
 
     const showHint = () => {toast(`🔊 ${currentGameData.hint}`, {
@@ -115,6 +115,7 @@ export default function Question({ userScore, setUserScore}) {
         if(currentQuizNumber > gameData.length){
             setIsEnd(true)
             settingResultMessage(userScore);
+            setCurrentQuizNumber(0)
         }else{
             setCurrentGameData([...gameData][currentQuizNumber-1])
         }
@@ -124,15 +125,14 @@ export default function Question({ userScore, setUserScore}) {
         <>  
         {!isEnd ? (
             <>
-                <CurrentNumber>{currentQuizNumber}번째 문제</CurrentNumber>
                 <ToastContainer />
                 <QuizPicture src={currentGameData.imageSrc} alt="퀴즈 사진"/>
                 <Hint onClick={showHint}>❔</Hint>
-                <Answers>
+                <AnswerWrapper>
                     {currentGameData.answers.map((answer, index) => (
-                        <Answer key={index} onClick={chooseAnswer}>{answer}</Answer>
+                        <AnswerButton key={index} onClick={chooseAnswer}>{answer}</AnswerButton>
                         ))}
-                </Answers>
+                </AnswerWrapper>
                 <Portal>
                     {isModalOpen && <Modal isCorrect={isCorrect} currentGameData={currentGameData} setIsModalOpen={setIsModalOpen} currentQuizNumber={currentQuizNumber} setCurrentQuizNumber={setCurrentQuizNumber}/>}
                 </Portal>

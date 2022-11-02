@@ -40,11 +40,5 @@ const gameData = [
       hint : 'Big wave Big wave 피하지 마🌊',
     },
   ];
-  
-  function shuffleArray(array) { // 문제 순서 랜덤으로 섞기
-    array.sort(() => Math.random() - 0.5);
-  }
-  
-  shuffleArray(gameData);
 
   export default gameData;
