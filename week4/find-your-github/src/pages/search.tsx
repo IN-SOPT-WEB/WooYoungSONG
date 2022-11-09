@@ -3,6 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { getGitHubProfile } from "../api/searchApi";
+import SearchResult from "./SearchResult";
 
 const SearchBackgroud = styled.div`
   display: flex;
@@ -47,9 +48,33 @@ const InputButton = styled.button`
   cursor: pointer;
 `;
 
+const NoUserBox = styled.div`
+  background-color: ${({ theme }) => theme.colors.subColor};
+  color: ${({ theme }) => theme.colors.buttonColor};
+  font-size: ${({ theme }) => theme.fontSizes.text};
+  width: 13rem;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 6px;
+`;
+
+export interface userProfileProps {
+  name: string;
+  avatar_url: string;
+  gitHubUrl: string;
+  following: number;
+  followers: number;
+  public_repos: number;
+}
+
 export default function Search() {
+  const [userProfile, setUserProfile] = useState<userProfileProps>();
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
+  const [isExist, setIsExist] = useState<boolean>(false);
 
   const onUserNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -57,11 +82,25 @@ export default function Search() {
   };
 
   const clickSearchButton = async () => {
-    if (!userName) return;
     const data = await getGitHubProfile(userName);
-    console.log(data);
-    setUserName("");
-    navigate(`/search/${userName}`);
+    if (data === "noUser") {
+      setIsExist(false);
+    } else {
+      console.log(data);
+      setUserProfile(data);
+      setUserProfile({
+        ...data,
+        name: data.login,
+        avatar_url: data.avatar_url,
+        gitHubUrl: data.html_url,
+        following: data.following,
+        followers: data.followers,
+        public_repos: data.public_repos,
+      });
+      setUserName("");
+      navigate(`/search/${userName}`);
+      setIsExist(true);
+    }
   };
 
   return (
@@ -75,6 +114,11 @@ export default function Search() {
         />
         <InputButton onClick={clickSearchButton}>검색</InputButton>
       </SearchInputContainer>
+      {isExist ? (
+        <SearchResult {...userProfile} />
+      ) : (
+        <NoUserBox>유저가 없습니다.</NoUserBox>
+      )}
     </SearchBackgroud>
   );
 }
