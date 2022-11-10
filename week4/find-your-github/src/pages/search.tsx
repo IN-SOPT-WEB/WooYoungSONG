@@ -79,7 +79,7 @@ export interface userProfileProps {
 }
 
 export default function Search() {
-  const inputref = useRef<HTMLInputElement>(null);
+  const historyref = useRef<HTMLDivElement>(null);
   const [userProfile, setUserProfile] = useState<userProfileProps>();
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
@@ -180,14 +180,14 @@ export default function Search() {
 
   // 화면이 paint되기 전에 컴포넌트가 유저에게 보이자마자 포커스 되도록
   useLayoutEffect(() => {
-    if (inputref.current !== null) {
-      inputref.current.focus();
+    if (historyref.current !== null) {
+      historyref.current.focus();
     }
   }, []);
 
   //input 밖을 누르면 history 컴포넌트가 닫히도록
   const clickInputOutside = (event: any) => {
-    const current = inputref.current;
+    const current = historyref.current;
     if (!current?.contains(event.target)) {
       setIsHistoryShow(false);
     }
@@ -204,12 +204,11 @@ export default function Search() {
     <SearchBackgroud>
       <SearchTitle>찾고싶은 github userName을 검색창에 입력하세요!</SearchTitle>
       <SearchInputContainer>
-        <HistoryWrapper>
+        <HistoryWrapper ref={historyref}>
           <SearchInput
             placeholder="userName을 입력하세요"
             value={userName}
             onChange={onUserNameChange}
-            ref={inputref}
           />
           {isHistoryShow && (
             <History
