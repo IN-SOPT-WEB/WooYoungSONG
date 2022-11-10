@@ -130,7 +130,6 @@ export default function Search() {
     if (data === "noUser") {
       setIsExist(false);
     } else {
-      setUserProfile(data);
       setUserProfile({
         ...data,
         login: data.login,
@@ -162,7 +161,6 @@ export default function Search() {
     if (data === "noUser") {
       setIsExist(false);
     } else {
-      setUserProfile(data);
       setUserProfile({
         ...data,
         login: data.login,
