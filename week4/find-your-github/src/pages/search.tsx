@@ -78,7 +78,6 @@ export interface userProfileProps {
 }
 
 export default function Search() {
-  const inputRef = useRef();
   const [userProfile, setUserProfile] = useState<userProfileProps>();
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();

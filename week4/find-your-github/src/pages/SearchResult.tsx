@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 // import { gitIcon } from "../assets/images/github-logo.png";
-// import userProfileProps from "./search";
 
 const SearchResultBackground = styled.div`
   width: 70%;
@@ -78,15 +77,6 @@ const SubTitle = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.subTitle};
   color: ${({ theme }) => theme.colors.pointColor};
 `;
-
-interface userProfileProps {
-  name: string;
-  avatar_url: string;
-  gitHubUrl: string;
-  following: number;
-  followers: number;
-  public_repos: number;
-}
 
 interface SearchResultProps {
   userProfile: any;
