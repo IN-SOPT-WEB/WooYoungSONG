@@ -3,7 +3,7 @@ import styled from "styled-components";
 // import { gitIcon } from "../assets/images/github-logo.png";
 
 const SearchResultBackground = styled.div`
-  width: 70%;
+  width: 55%;
   height: 60%;
   display: flex;
   justify-content: center;
@@ -32,14 +32,24 @@ const UserInfo = styled.div`
   background-color: ${({ theme }) => theme.colors.subColor};
   width: 90%;
   height: 10rem;
-  padding-left: 1rem;
   border-radius: 6px;
+  justify-content: space-evenly;
+`;
+
+const UserNameWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const UserName = styled.div`
+  color: ${({ theme }) => theme.colors.pointColor};
+  font-size: ${({ theme }) => theme.fontSizes.title};
 `;
 
 const UserLogin = styled.div`
   color: ${({ theme }) => theme.colors.buttonColor};
-  font-size: ${({ theme }) => theme.fontSizes.subTitle};
-  margin-left: 1rem;
+  font-size: ${({ theme }) => theme.fontSizes.text};
+  margin: 1rem 0;
 `;
 
 const UserImage = styled.img`
@@ -91,10 +101,13 @@ export default function SearchResult({
       <CloseButton onClick={closeResult}>X</CloseButton>
       <UserInfo>
         <UserImage alt="사용자 이미지" src={userProfile.avatar_url} />
-        <UserLogin>{userProfile.name}</UserLogin>
-        <GitHUbrUrl href={userProfile.gitHubUrl}>
-          <span className="material-symbols-outlined">link</span>
-        </GitHUbrUrl>
+        <UserNameWrapper>
+          <UserName>{userProfile.name}</UserName>
+          <UserLogin>{userProfile.login}</UserLogin>
+          <GitHUbrUrl href={userProfile.gitHubUrl}>
+            <span className="material-symbols-outlined">link</span>
+          </GitHUbrUrl>
+        </UserNameWrapper>
       </UserInfo>
       <UserDetail>
         <UserDetailBox>
