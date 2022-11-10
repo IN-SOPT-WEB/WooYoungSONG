@@ -133,7 +133,8 @@ export default function Search() {
       setUserProfile(data);
       setUserProfile({
         ...data,
-        name: data.login,
+        login: data.login,
+        name: data.name,
         avatar_url: data.avatar_url,
         gitHubUrl: data.html_url,
         following: data.following,
