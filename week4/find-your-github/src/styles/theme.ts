@@ -12,6 +12,7 @@ const colors = {
   subColor: '#F2EBE5',
   pointColor: '#9F496E',
   buttonColor: '#2B262D',
+  grayColor: '#777',
 };
 
 const theme: DefaultTheme = {

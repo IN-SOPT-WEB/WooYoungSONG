@@ -15,6 +15,17 @@ const SearchResultBackground = styled.div`
   margin-top: 3rem;
 `;
 
+const CloseButton = styled.button`
+  font-size: ${({ theme }) => theme.fontSizes.text};
+  color: ${({ theme }) => theme.colors.buttonColor};
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  cursor: pointer;
+`;
+
 const UserInfo = styled.div`
   display: flex;
   align-items: center;
@@ -77,9 +88,17 @@ interface userProfileProps {
   public_repos: number;
 }
 
-export default function SearchResult(userProfile: any) {
+interface SearchResultProps {
+  userProfile: any;
+  closeResult: () => void;
+}
+export default function SearchResult({
+  userProfile,
+  closeResult,
+}: SearchResultProps) {
   return (
     <SearchResultBackground>
+      <CloseButton onClick={closeResult}>X</CloseButton>
       <UserInfo>
         <UserImage alt="사용자 이미지" src={userProfile.avatar_url} />
         <UserLogin>{userProfile.name}</UserLogin>

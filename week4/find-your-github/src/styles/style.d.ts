@@ -13,6 +13,7 @@ declare module 'styled-components' {
       subColor: string;
       pointColor: string;
       buttonColor: string;
+      grayColor: string;
     };
   }
 }
