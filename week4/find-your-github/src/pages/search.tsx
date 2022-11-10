@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -79,6 +79,7 @@ export interface userProfileProps {
 }
 
 export default function Search() {
+  const inputref = useRef<HTMLInputElement>(null);
   const [userProfile, setUserProfile] = useState<userProfileProps>();
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
@@ -145,7 +146,6 @@ export default function Search() {
   };
 
   const resetSearch = () => {
-    handleAddHistory();
     setIsHistoryShow(false);
     setUserName("");
   };
@@ -153,6 +153,7 @@ export default function Search() {
   const clickSearchButton = () => {
     resetSearch();
     sendApi();
+    handleAddHistory();
   };
 
   const clickHistory = async (history: string) => {
@@ -171,11 +172,33 @@ export default function Search() {
         followers: data.followers,
         public_repos: data.public_repos,
       });
-      navigate(`/search/${userName}`);
+      navigate(`/search/${history}`);
       setIsExist(true);
     }
     resetSearch();
   };
+
+  // 화면이 paint되기 전에 컴포넌트가 유저에게 보이자마자 포커스 되도록
+  useLayoutEffect(() => {
+    if (inputref.current !== null) {
+      inputref.current.focus();
+    }
+  }, []);
+
+  //input 밖을 누르면 history 컴포넌트가 닫히도록
+  const clickInputOutside = (event: any) => {
+    const current = inputref.current;
+    if (!current?.contains(event.target)) {
+      setIsHistoryShow(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", clickInputOutside);
+    return () => {
+      document.removeEventListener("mousedown", clickInputOutside);
+    };
+  });
 
   return (
     <SearchBackgroud>
@@ -186,6 +209,7 @@ export default function Search() {
             placeholder="userName을 입력하세요"
             value={userName}
             onChange={onUserNameChange}
+            ref={inputref}
           />
           {isHistoryShow && (
             <History
