@@ -8,8 +8,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { getGitHubProfile } from "../api/searchApi";
-import SearchResult from "./SearchResult";
-import History from "./Histroy";
+import SearchResult from "../components/SearchResult";
+import History from "../components/Histroy";
 import { UserProfileProps } from "../api/type";
 import { HistoryListProps } from "../api/type";
 
@@ -89,7 +89,7 @@ export default function Search() {
   });
   const [userName, setUserName] = useState<string>("");
   const [isExist, setIsExist] = useState<boolean>(false);
-  const [history, setHistory] = useState(
+  const [history, setHistory] = useState<string[]>(
     JSON.parse(localStorage.getItem("history") || "[]")
   );
   const [isHistoryShow, setIsHistoryShow] = useState<boolean>(false);

@@ -108,6 +108,7 @@
     "src/styles",
     "src/pages",
     "src/common",
+    "src/components",
     "src/assets"
   ]
 }
