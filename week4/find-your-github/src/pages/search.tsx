@@ -1,10 +1,17 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, {
+  MouseEventHandler,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+} from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { getGitHubProfile } from "../api/searchApi";
 import SearchResult from "./SearchResult";
 import History from "./Histroy";
+import { UserProfileProps } from "../api/type";
+import { HistoryListProps } from "../api/type";
 
 const SearchBackgroud = styled.div`
   display: flex;
@@ -68,21 +75,19 @@ const NoUserBox = styled.div`
   border-radius: 6px;
 `;
 
-export interface userProfileProps {
-  login: string;
-  name: string;
-  avatar_url: string;
-  gitHubUrl: string;
-  following: number;
-  followers: number;
-  public_repos: number;
-}
-
 export default function Search() {
-  const historyref = useRef<HTMLDivElement>(null);
-  const [userProfile, setUserProfile] = useState<userProfileProps>();
-  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
+  const historyref = useRef<HTMLDivElement>(null);
+  const [userProfile, setUserProfile] = useState<UserProfileProps>({
+    login: "",
+    name: "",
+    avatar_url: "",
+    gitHubUrl: "",
+    following: 0,
+    followers: 0,
+    public_repos: 0,
+  });
+  const [userName, setUserName] = useState<string>("");
   const [isExist, setIsExist] = useState<boolean>(false);
   const [history, setHistory] = useState(
     JSON.parse(localStorage.getItem("history") || "[]")
@@ -125,13 +130,20 @@ export default function Search() {
     setHistory([]);
   };
 
-  const sendApi = async () => {
-    const data = await getGitHubProfile(userName);
+  const sendApi = async (test: string | React.MouseEvent<HTMLElement>) => {
+    let data;
+    if (typeof test === "string") {
+      data = await getGitHubProfile(test);
+      navigate(`/search/${test}`);
+    } else {
+      data = await getGitHubProfile(userName);
+      navigate(`/search/${userName}`);
+    }
     if (data === "noUser") {
       setIsExist(false);
     } else {
       setUserProfile({
-        ...data,
+        ...userProfile,
         login: data.login,
         name: data.name,
         avatar_url: data.avatar_url,
@@ -140,7 +152,6 @@ export default function Search() {
         followers: data.followers,
         public_repos: data.public_repos,
       });
-      navigate(`/search/${userName}`);
       setIsExist(true);
     }
   };
@@ -150,31 +161,10 @@ export default function Search() {
     setUserName("");
   };
 
-  const clickSearchButton = () => {
+  const clickSearchButton = (test: string | React.MouseEvent<HTMLElement>) => {
     resetSearch();
-    sendApi();
+    sendApi(test);
     handleAddHistory();
-  };
-
-  const clickHistory = async (history: string) => {
-    const data = await getGitHubProfile(history);
-    if (data === "noUser") {
-      setIsExist(false);
-    } else {
-      setUserProfile({
-        ...data,
-        login: data.login,
-        name: data.name,
-        avatar_url: data.avatar_url,
-        gitHubUrl: data.html_url,
-        following: data.following,
-        followers: data.followers,
-        public_repos: data.public_repos,
-      });
-      navigate(`/search/${history}`);
-      setIsExist(true);
-    }
-    resetSearch();
   };
 
   // 화면이 paint되기 전에 컴포넌트가 유저에게 보이자마자 포커스 되도록
@@ -185,17 +175,23 @@ export default function Search() {
   }, []);
 
   //input 밖을 누르면 history 컴포넌트가 닫히도록
-  const clickInputOutside = (event: any) => {
+  const clickInputOutside = (event: React.MouseEvent) => {
     const current = historyref.current;
-    if (!current?.contains(event.target)) {
+    if (!current?.contains(event.target as HTMLElement)) {
       setIsHistoryShow(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", clickInputOutside);
+    document.addEventListener(
+      "mousedown",
+      clickInputOutside as unknown as EventListener
+    );
     return () => {
-      document.removeEventListener("mousedown", clickInputOutside);
+      document.removeEventListener(
+        "mousedown",
+        clickInputOutside as unknown as EventListener
+      );
     };
   });
 
@@ -214,7 +210,7 @@ export default function Search() {
               history={history}
               onRemoveHistory={handleRemoveHistory}
               onClearHistory={handleClearHistory}
-              clickHistory={clickHistory}
+              clickSearchButton={clickSearchButton}
             />
           )}
         </HistoryWrapper>

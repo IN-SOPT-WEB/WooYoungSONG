@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { HistoryListProps } from "../api/type";
 
 const HistoryContainer = styled.div`
   padding: 1rem;
@@ -56,14 +57,14 @@ interface Historyprops {
   history: any;
   onRemoveHistory: (id: number) => void;
   onClearHistory: () => void;
-  clickHistory: (username: string) => void;
+  clickSearchButton: (username: string) => void;
 }
 
 function History({
   history,
   onRemoveHistory,
   onClearHistory,
-  clickHistory,
+  clickSearchButton,
 }: Historyprops) {
   if (history.length === 0) {
     return <HistoryContainer>최근 검색된 기록이 없습니다.</HistoryContainer>;
@@ -78,7 +79,7 @@ function History({
         {history.map(({ id, text }: any) => {
           return (
             <KeywordContainer key={id}>
-              <Keyword onClick={() => clickHistory(text)}>{text}</Keyword>
+              <Keyword onClick={() => clickSearchButton(text)}>{text}</Keyword>
               <RemoveButton
                 onClick={() => {
                   onRemoveHistory(id);

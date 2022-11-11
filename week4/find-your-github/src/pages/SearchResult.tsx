@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-// import { gitIcon } from "../assets/images/github-logo.png";
+import gitIcon from "../assets/images/github-logo.png";
+import { UserProfileProps } from "../api/type";
 
 const SearchResultBackground = styled.div`
   width: 55%;
@@ -70,6 +71,11 @@ const GitHUbrUrl = styled.a`
   text-decoration: none;
 `;
 
+const GitHubImage = styled.img`
+  width: 1rem;
+  height: 1rem;
+`;
+
 const UserDetailBox = styled.div`
   background-color: ${({ theme }) => theme.colors.subColor};
   color: ${({ theme }) => theme.colors.buttonColor};
@@ -89,37 +95,47 @@ const SubTitle = styled.div`
 `;
 
 interface SearchResultProps {
-  userProfile: any;
+  userProfile: UserProfileProps;
   closeResult: () => void;
 }
 export default function SearchResult({
   userProfile,
   closeResult,
 }: SearchResultProps) {
+  const {
+    login,
+    name,
+    avatar_url,
+    gitHubUrl,
+    following,
+    followers,
+    public_repos,
+  } = userProfile;
+
   return (
     <SearchResultBackground>
       <CloseButton onClick={closeResult}>X</CloseButton>
       <UserInfo>
-        <UserImage alt="사용자 이미지" src={userProfile.avatar_url} />
+        <UserImage alt="사용자 이미지" src={avatar_url} />
         <UserNameWrapper>
-          <UserName>{userProfile.name}</UserName>
-          <UserLogin>{userProfile.login}</UserLogin>
-          <GitHUbrUrl href={userProfile.gitHubUrl}>
-            <span className="material-symbols-outlined">link</span>
+          <UserName>{name}</UserName>
+          <UserLogin>{login}</UserLogin>
+          <GitHUbrUrl href={gitHubUrl}>
+            <GitHubImage alt="github 이미지" src={gitIcon}></GitHubImage>
           </GitHUbrUrl>
         </UserNameWrapper>
       </UserInfo>
       <UserDetail>
         <UserDetailBox>
-          <SubTitle>following</SubTitle> {userProfile.following}
+          <SubTitle>following</SubTitle> {following}
         </UserDetailBox>
         <UserDetailBox>
           <SubTitle>followers</SubTitle>
-          {userProfile.followers}
+          {followers}
         </UserDetailBox>
         <UserDetailBox>
           <SubTitle>public_repos</SubTitle>
-          {userProfile.public_repos}
+          {public_repos}
         </UserDetailBox>
       </UserDetail>
     </SearchResultBackground>
