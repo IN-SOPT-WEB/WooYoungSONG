@@ -96,7 +96,7 @@ const SubTitle = styled.div`
 
 interface SearchResultProps {
   userProfile: UserProfileProps;
-  closeResult: () => void;
+  closeResult: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 export default function SearchResult({
   userProfile,

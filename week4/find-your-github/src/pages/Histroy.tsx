@@ -56,7 +56,7 @@ const Keyword = styled.span`
 interface Historyprops {
   history: any;
   onRemoveHistory: (id: number) => void;
-  onClearHistory: () => void;
+  onClearHistory: (e: React.MouseEvent<HTMLSpanElement>) => void;
   clickSearchButton: (username: string) => void;
 }
 
