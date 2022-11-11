@@ -9,6 +9,7 @@ export interface UserProfileProps {
 	public_repos: number;
 }
 
-export interface HistoryListProps{
-	[id: number]: string,
+export interface HistoryItemProps{
+	id : number;
+	text : string;
 }

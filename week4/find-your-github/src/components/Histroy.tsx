@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { HistoryListProps } from "../api/type";
+import { HistoryItemProps } from "../api/type";
 
 const HistoryContainer = styled.div`
   padding: 1rem;
@@ -54,7 +54,7 @@ const Keyword = styled.span`
 `;
 
 interface Historyprops {
-  history: any;
+  history: Array<HistoryItemProps>;
   onRemoveHistory: (id: number) => void;
   onClearHistory: (e: React.MouseEvent<HTMLSpanElement>) => void;
   clickSearchButton: (username: string) => void;
@@ -76,7 +76,7 @@ function History({
         <RemoveText onClick={onClearHistory}>전체삭제</RemoveText>
       </HeaderContainer>
       <ListContainer>
-        {history.map(({ id, text }: any) => {
+        {history.map(({ id, text }) => {
           return (
             <KeywordContainer key={id}>
               <Keyword onClick={() => clickSearchButton(text)}>{text}</Keyword>

@@ -11,7 +11,7 @@ import { getGitHubProfile } from "../api/searchApi";
 import SearchResult from "../components/SearchResult";
 import History from "../components/Histroy";
 import { UserProfileProps } from "../api/type";
-import { HistoryListProps } from "../api/type";
+import { HistoryItemProps } from "../api/type";
 
 const SearchBackgroud = styled.div`
   display: flex;
@@ -89,7 +89,7 @@ export default function Search() {
   });
   const [userName, setUserName] = useState<string>("");
   const [isExist, setIsExist] = useState<boolean>(false);
-  const [history, setHistory] = useState<string[]>(
+  const [history, setHistory] = useState<HistoryItemProps[]>(
     JSON.parse(localStorage.getItem("history") || "[]")
   );
   const [isHistoryShow, setIsHistoryShow] = useState<boolean>(false);
@@ -110,7 +110,7 @@ export default function Search() {
 
   //검색어 추가
   const handleAddHistory = () => {
-    const newText = {
+    const newText: HistoryItemProps = {
       id: Date.now(),
       text: userName,
     };
@@ -119,8 +119,8 @@ export default function Search() {
 
   //검색어 삭제
   const handleRemoveHistory = (id: number) => {
-    const nextText = history.filter((text: { id: number }) => {
-      return text.id != id;
+    const nextText = history.filter((value) => {
+      return value.id != id;
     });
     setHistory(nextText);
   };
