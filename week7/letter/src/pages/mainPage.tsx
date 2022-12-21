@@ -23,7 +23,6 @@ const MainPage = () => {
       .then((res) => {
         const data = res.data;
         setletters(data);
-        console.log("sdf", data);
       });
   };
 
