@@ -1,18 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Letter from "../pages/letter.tsx";
-import Write from "../pages/write.tsx";
-import Edit from "../pages/edit.tsx";
-import Error from "../pages/error.tsx";
+import MainPage from "../pages/mainPage.tsx";
+import WritePage from "../pages/writePage.tsx";
+import EditPage from "../pages/editPage.tsx";
+import ErrorPage from "../pages/errorPage.tsx";
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Letter />} />
-        <Route path="/write" element={<Write />} />
-        <Route path="/edit" element={<Edit />} />
-        <Route path="*" element={<Error />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="/write" element={<WritePage />} />
+        <Route path="/edit" element={<EditPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
