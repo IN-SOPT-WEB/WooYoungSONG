@@ -37,6 +37,8 @@ const Letter = (letterData: letterDataProps) => {
 
   const closeModal = () => {
     setIsOpened(false);
+    setContent("");
+    setCount(0);
   };
 
   useInterval(() => {
