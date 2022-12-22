@@ -82,6 +82,7 @@ const LetterBackground = styled.article`
 
   color: ${({ theme }) => theme.colors.brown};
   background-color: ${({ theme }) => theme.colors.yellow};
+  border: 10px dashed ${({ theme }) => theme.colors.green};
 
   display: flex;
   align-items: center;
@@ -101,7 +102,13 @@ const LetterModalBackground = styled.article`
   height: 100vh;
   z-index: 999;
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background: repeating-linear-gradient(
+    45deg,
+    #b1b1b1,
+    #b1b1b1 10px,
+    #e6e6e6 0,
+    #e6e6e6 20px
+  );
 
   display: flex;
   justify-content: center;

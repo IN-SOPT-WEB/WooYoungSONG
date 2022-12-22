@@ -74,4 +74,5 @@ const WriteButton = styled.button`
 const LetterContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
 `;
