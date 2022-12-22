@@ -2,12 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import Letter from "../components/letter";
-import { letter } from "../common/type";
+import LetterItem from "../components/letterItem";
+import { Letter } from "../common/type";
 
 const MainPage = () => {
   const navigate = useNavigate();
-  const [letters, setletters] = useState<letter[]>([]);
+  const [letters, setletters] = useState<Letter[]>([]);
 
   const getLetters = () => {
     fetch("/letters")
@@ -34,8 +34,8 @@ const MainPage = () => {
         <WriteButton onClick={gotoWrite}>편지쓰기</WriteButton>
       </Header>
       <LetterContainer>
-        {letters.map((letterData: letter) => {
-          return <Letter key={letterData.id} letterData={letterData} />;
+        {letters.map((letterData: Letter) => {
+          return <LetterItem key={letterData.id} letterData={letterData} />;
         })}
       </LetterContainer>
     </>

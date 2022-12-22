@@ -1,4 +1,4 @@
-export interface letter {
+export interface Letter {
   id: number;
   writer: string;
   title: string;
@@ -7,8 +7,8 @@ export interface letter {
   password: string;
 }
 
-export interface letterDataProps {
-  letterData: letter;
+export interface LetterDataProps {
+  letterData: Letter;
 }
 export interface UseInterval {
   (callback: () => void, interval: number): void;

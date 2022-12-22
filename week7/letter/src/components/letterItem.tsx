@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { letter, letterDataProps } from "../common/type";
+import { Letter, LetterDataProps } from "../common/type";
 import { useInterval } from "../utils/useInterval";
 
-const Letter = (letterData: letterDataProps) => {
-  const letter: letter = letterData.letterData;
+const LetterItem = (letterData: LetterDataProps) => {
+  const letter: Letter = letterData.letterData;
   const [isOpened, setIsOpened] = useState(false);
   const [content, setContent] = useState("");
   const [count, setCount] = useState(0);
@@ -157,4 +157,4 @@ const LetterInfo = styled.section`
   }
 `;
 
-export default Letter;
+export default LetterItem;
