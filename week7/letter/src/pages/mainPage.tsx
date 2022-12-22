@@ -3,22 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Letter from "../components/letter";
-
-interface letter {
-  id: number;
-  writer: string;
-  title: string;
-  content: string;
-  passwordHint: string;
-  password: string;
-}
+import { letter } from "../common/type";
 
 const MainPage = () => {
   const navigate = useNavigate();
   const [letters, setletters] = useState<letter[]>([]);
 
   const getLetters = () => {
-    fetch("https://test.api.com/letters")
+    fetch("/letters")
       .then((res) => res.json())
       .then((res) => {
         const data = res.data;

@@ -1,6 +1,6 @@
 import { rest } from "msw";
 export const handlers = [
-  rest.get("https://test.api.com/letters", (req, res, ctx) => {
+  rest.get("/letters", (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -33,7 +33,7 @@ export const handlers = [
       })
     );
   }),
-  rest.get("https://test.api.com/letters/1", (req, res, ctx) => {
+  rest.get("/letters/1", (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -46,7 +46,7 @@ export const handlers = [
       })
     );
   }),
-  rest.get("https://test.api.com/letters/2", (req, res, ctx) => {
+  rest.get("/letters/2", (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -59,7 +59,7 @@ export const handlers = [
       })
     );
   }),
-  rest.get("https://test.api.com/letters/3", (req, res, ctx) => {
+  rest.get("/letters/3", (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({

@@ -1,24 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-
-interface letter {
-  id: number;
-  writer: string;
-  title: string;
-  content: string;
-  passwordHint: string;
-  password: string;
-}
-
-interface letterDataProps {
-  letterData: letter;
-}
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { letter, letterDataProps } from "../common/type";
+import { useInterval } from "../utils/useInterval";
 
 const Letter = (letterData: letterDataProps) => {
+  const letter: letter = letterData.letterData;
+  const [isOpened, setIsOpened] = useState(false);
+  const [content, setContent] = useState("");
+  const [count, setCount] = useState(0);
+
+  const PasswordSwal = withReactContent(Swal);
+
+  const openModal = () => {
+    PasswordSwal.fire({
+      title: "비밀번호가 일치해야 편지를 볼 수 있어요!",
+      input: "text",
+      showCancelButton: true,
+      inputPlaceholder: "비밀번호를 입력하세요.",
+      inputLabel: letter.passwordHint,
+      confirmButtonText: "편지 열기",
+      denyButtonText: `닫기`,
+      inputValidator: (value) => {
+        return new Promise((resolve) => {
+          if (value === letter.password) {
+            setIsOpened(true);
+            Swal.close();
+          } else {
+            resolve("비밀번호를 다시 입력하세요!");
+          }
+        });
+      },
+    });
+  };
+
+  const closeModal = () => {
+    setIsOpened(false);
+  };
+
+  useInterval(() => {
+    if (isOpened) {
+      if (count >= letter.content.length) {
+        return;
+      }
+
+      setContent((prev) => {
+        let result = prev ? prev + letter.content[count] : letter.content[0];
+        setCount(count + 1);
+
+        return result;
+      });
+    }
+  }, 300);
+
   return (
-    <LetterBackground>
-      <Writer>{letterData.letterData.writer}</Writer>
-    </LetterBackground>
+    <>
+      <LetterBackground onClick={openModal}>
+        <Writer>{letter.writer}</Writer>
+      </LetterBackground>
+      {isOpened && (
+        <LetterModalBackground>
+          <LetterModal>
+            <LetterInfo>
+              <h1>{letter.title}</h1>
+              <button onClick={closeModal}>x</button>
+            </LetterInfo>
+            <h2>편지 쓴 사람 : {letter.writer}</h2>
+            <p>{content}</p>
+          </LetterModal>
+        </LetterModalBackground>
+      )}
+    </>
   );
 };
 
@@ -39,6 +92,60 @@ const LetterBackground = styled.article`
 
 const Writer = styled.h1`
   font-size: ${({ theme }) => theme.fontSizes.header};
+`;
+
+const LetterModalBackground = styled.article`
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+
+  background-color: ${({ theme }) => theme.colors.white};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LetterModal = styled.section`
+  width: 800px;
+  height: 400px;
+  padding: 20px;
+
+  font-size: ${({ theme }) => theme.fontSizes.text};
+
+  background-color: ${({ theme }) => theme.colors.yellow};
+
+  display: flex;
+  flex-direction: column;
+
+  border: 10px dashed ${({ theme }) => theme.colors.red};
+  & > h2 {
+    font-size: ${({ theme }) => theme.fontSizes.subTitle};
+
+    padding-bottom: 10px;
+  }
+`;
+
+const LetterInfo = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  color: ${({ theme }) => theme.colors.brown};
+
+  & > button {
+    font-size: ${({ theme }) => theme.fontSizes.title};
+    border: none;
+    background-color: ${({ theme }) => theme.colors.yellow};
+
+    cursor: pointer;
+  }
+
+  & > h1 {
+    font-size: ${({ theme }) => theme.fontSizes.title};
+  }
 `;
 
 export default Letter;
